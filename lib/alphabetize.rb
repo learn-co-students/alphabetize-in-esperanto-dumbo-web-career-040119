@@ -1,19 +1,10 @@
+ESPERANTO_ALPHABET = "abcĉdefgĝhĥijĵklmnoprsŝtuŭvz"
+phrases = [
+  "mi amas vin", "bonan matenon", "pacon", "ĉu vi parolas esperanton"
+  ]
 
 def alphabetize(phrases)
-  ESPERANTO_ALPHABET = "abcĉdefgĝhĥijĵklmnoprsŝtuŭvz"
-  hash = Hash.new
-  esperanto_split = ESPERANTO_ALPHABET.split("").to_a
-  esperanto_split.each_with_index do |letter, idx|
-    for i in 0..phrases.length-1
-      if phrases[i].chr == letter
-        hash[phrases[i]] = idx
-      end
-    end
-  end
-  array = Array.new
-  hash.each do |phrase, index|
-    array << phrase
-  end
 
-array
+  phrases.sort_by { |phrase| phrase.split("").map{ |char| ESPERANTO_ALPHABET.index(char) } }
+
 end
